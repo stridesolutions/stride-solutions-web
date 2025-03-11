@@ -66,6 +66,36 @@
           sunIcon.style.display = savedTheme === 'dark' ? 'block' : 'none';
           moonIcon.style.display = savedTheme === 'dark' ? 'none' : 'block';
         }
+        
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.body;
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && 
+                !navLinks.contains(e.target) && 
+                navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
       });
     </script>
   </head>
@@ -74,22 +104,29 @@
     <header>
       <nav class="navbar">
         <div class="container">
+            <button class="hamburger" aria-label="Toggle menu">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
             <div class="logo">
                 <a href="#">
                     <img src="stride-solutions-logo-text.svg" alt="Stride Solutions Logo" class="logo-img">
                 </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="theme-toggle-wrapper">
-                    <button class="theme-toggle" aria-label="Toggle theme">
-                        <i class="fas fa-sun sun-icon"></i>
-                        <i class="fas fa-moon moon-icon" style="display: none;"></i>
-                    </button>
-                </li>
-            </ul>
+            <div class="center-section">
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="right-section">
+              <button class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-sun sun-icon"></i>
+                <i class="fas fa-moon moon-icon" style="display: none;"></i>
+              </button>
+            </div>
         </div>
       </nav>
     </header>

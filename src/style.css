@@ -256,7 +256,7 @@ footer a:hover {
 .theme-toggle {
   background: none;
   border: none;
-  padding: 0;
+  padding: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -307,3 +307,166 @@ social-link:hover {
 .social-link i {
   font-size: 1.5rem;
 }
+
+/* === Hamburger Menu Styles === */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    width: 100%;
+    height: 4px;
+    background-color: var(--text-primary);
+    position: absolute;
+    transition: transform 0.15s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--text-primary);
+    position: absolute;
+    transition: transform 0.15s ease;
+}
+
+.hamburger-inner::before {
+    top: -8px;
+}
+
+.hamburger-inner::after {
+    bottom: -8px;
+}
+
+/* Active state */
+.hamburger.active .hamburger-inner {
+    transform: rotate(90deg);
+}
+
+.hamburger.active .hamburger-inner::before {
+    transform: rotate(-90deg);
+    top: 0;
+}
+
+.hamburger.active .hamburger-inner::after {
+    display: none;
+}
+
+/* === Media Queries === */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .logo-img {
+        height: 30px;
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #hero p {
+        font-size: 1.1rem;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .social-link {
+        font-size: 1.1rem;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .hero-btn {
+      text-align: center;
+    }
+
+    .navbar .container {
+        justify-content: center;
+        position: relative;
+    }
+
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        bottom: 0;
+        width: 250px;
+        background: var(--nav-bg);
+        flex-direction: column;
+        padding: 100px 20px 20px;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 0 0 20px 0;
+    }
+
+    .logo-img {
+        height: 40px;
+
+      }
+
+    .hamburger {
+        margin-right: auto;
+        display: block;
+    }
+        .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+    
+    .logo {
+      position: absolute; /* Position the second item centrally */
+      left: 50%;
+      transform: translateX(-50%); 
+    }
+    .theme-toggle {
+      margin-left: auto;
+    }
+}
+
+/* Add viewport meta tag to your HTML head */
