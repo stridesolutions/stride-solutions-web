@@ -1,0 +1,9 @@
+{
+  "name": "stride-solutions-website",
+  "version": "1.0.0",
+  "description": "Stride Solutions public website",
+  "scripts": {
+    "build": "echo 'No build required'"
+  },
+  "private": true
+}

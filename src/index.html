@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Personal Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts for a modern look -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Poppins:400,700" />
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Add Font Awesome CDN in the head section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll(".nav-links a");
+            
+            links.forEach(link => {
+                link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute("href").substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                    top: targetSection.offsetTop - 60, // offset for fixed navbar
+                    behavior: "smooth"
+                    });
+                }
+                });
+            });
+        });
+    </script>
+    <script>
+      window.addEventListener('scroll', () => {
+        const scrollProgress = document.querySelector('.scroll-progress-bar');
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        scrollProgress.style.width = `${scrolled}%`;
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set initial theme based on user preference
+        document.documentElement.setAttribute('data-theme', 'dark');
+
+        const themeToggle = document.querySelector('.theme-toggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+
+        if (themeToggle && sunIcon && moonIcon) {
+          themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            
+            // Toggle icons
+            sunIcon.style.display = newTheme === 'dark' ? 'block' : 'none';
+            moonIcon.style.display = newTheme === 'dark' ? 'none' : 'block';
+            
+            // Save theme preference
+            localStorage.setItem('theme', newTheme);
+          });
+
+          // Check for saved theme preference
+          const savedTheme = localStorage.getItem('theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', savedTheme);
+          sunIcon.style.display = savedTheme === 'dark' ? 'block' : 'none';
+          moonIcon.style.display = savedTheme === 'dark' ? 'none' : 'block';
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Fixed Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#">
+                    <img src="stride-solutions-logo-text.svg" alt="Stride Solutions Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="theme-toggle-wrapper">
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon" style="display: none;"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress">
+      <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-content">
+        <h1>
+            <div>IT consultancy &</div>
+            <div>Software Development</div>
+        </h1>
+        <p>Empowering businesses with expert advice to navigate their digital challenges.</p>
+        <!-- <p>Specializing in IT consultancy and Software Development.</p> -->
+        <p>Delivering solutions that drive success.</p>
+        <div class="hero-btn">
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>
+            At <a href="https://stiredsolutions.eu">Stride Solutions</a>, we specialize in transforming ideas into impactful digital innovations. Our team of experts in software design and development is dedicated to delivering sleek, cost-effective solutions that drive tangible results and elevate user experiences.
+        </p>
+        <p>
+            We empower businesses to streamline operations, optimize processes, and achieve their goals through tailored software solutions and expert IT consultancy. Whether you’re seeking to enhance efficiency, improve scalability, or navigate digital challenges, <a href="https://stiredsolutions.eu">Stride Solutions</a> is your trusted partner for success.
+        </p>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="social-links">
+                <a href="mailto:mail@stridesolutions.eu" class="social-link">
+                    <i class="far fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://x.com/stride_consult" class="social-link">
+                    <i class="fab fa-x-twitter"></i>
+                    <span>X.com</span>
+                </a>
+                <a href="https://github.com/stridesolutions" class="social-link">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 <a href="https://stiredsolutions.eu">stiredsolutions.eu</a> All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
