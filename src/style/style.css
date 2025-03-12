@@ -74,7 +74,7 @@ body {
 .navbar .logo a {
   display: flex;
   align-items: center;
-  text-decoration: none;
+  text-decoration: underline;
   transition: opacity 0.3s ease;
   color: var(--text-primary);
 }
@@ -89,7 +89,8 @@ body {
 }
 
 /* Dark theme logo adjustment if needed */
-:root[data-theme="dark"] .logo-img {
+:root[data-theme="dark"] .logo-img,
+:root[data-theme="dark"] .icon {
   filter: brightness(0) invert(1); /* This will make the logo white in dark mode */
 }
 
@@ -103,7 +104,7 @@ body {
 }
 
 .navbar .nav-links a {
-  text-decoration: none;
+  text-decoration: underline;
   color: var(--text-primary);
   font-weight: 500;
   transition: color 0.3s;
@@ -202,7 +203,7 @@ section {
 
 #about a {
   color: var(--text-secondary);
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.3s ease;
 }
 
@@ -221,7 +222,7 @@ footer {
 
 footer a {
   color: var(--text-secondary);
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.3s ease;
 }
 
@@ -275,12 +276,9 @@ footer a:hover {
   transition: all 0.3s ease;
 }
 
-.sun-icon {
-  color: var(--text-primary);
-}
-
-.moon-icon {
-  color: var(--text-primary);
+.icon {
+  width: 2em;
+  height: 2em;
 }
 
 /* === Social Links === */
@@ -383,10 +381,6 @@ social-link:hover {
         text-align: center;
     }
 
-    .logo-img {
-        height: 30px;
-    }
-
     #hero h1 {
         font-size: 2.5rem;
     }
@@ -443,16 +437,12 @@ social-link:hover {
         margin: 0 0 20px 0;
     }
 
-    .logo-img {
-        height: 40px;
-
-      }
-
     .hamburger {
         margin-right: auto;
         display: block;
     }
-        .navbar .container {
+
+    .navbar .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
